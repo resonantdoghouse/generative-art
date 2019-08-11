@@ -22,6 +22,7 @@ const sketch = () => {
         points.push({
           color: random.pick(palette),
           radius,
+          rotation: random.noise2D(u, v),
           position: [u, v]
         });
       }
@@ -37,17 +38,32 @@ const sketch = () => {
     context.fillRect(0, 0, width, height);
 
     points.forEach(data => {
-      const { position, radius, color } = data;
+      const {
+        position,
+        radius,
+        color,
+        rotation
+      } = data;
+
       const [u, v] = position;
 
       const x = lerp(margin, width - margin, u);
       const y = lerp(margin, height - margin, v);
 
-      context.beginPath();
-      context.arc(x, y, radius * width, 0, Math.PI * 2, false);
+      // context.beginPath();
+      // context.arc(x, y, radius * width, 0, Math.PI * 2, false);
+      // context.fillStyle = color;
+      // context.lineWidth = 6;
+      // context.fill();
+
+      context.save();
       context.fillStyle = color;
-      context.lineWidth = 6;
-      context.fill();
+      context.font = `${radius * width}px "Arial"`;
+      context.translate(x,y);
+      context.rotate(rotation);
+      context.fillText('=', 0, 0);
+      context.restore();
+
     });
   };
 };
