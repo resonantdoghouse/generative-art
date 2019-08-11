@@ -23,7 +23,7 @@ const sketch = () => {
     return points;
   };
 
-  random.setSeed(512);
+  random.setSeed(256);
   const points = createGrid().filter(() => random.value() > 0.5);
   const margin = 200;
 
@@ -40,7 +40,7 @@ const sketch = () => {
       const y = lerp(margin, height - margin, v);
 
       context.beginPath();
-      context.arc(x, y, 8, 0, Math.PI * 2, false);
+      context.arc(x, y, radius * width, 0, Math.PI * 2, false);
       context.fillStyle = "white";
       context.lineWidth = 6;
       context.fill();
