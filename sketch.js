@@ -9,13 +9,13 @@ const settings = {
 const sketch = () => {
   const createGrid = () => {
     const points = [];
-    const count = 40;
+    const count = 32;
     for (let x = 0; x < count; x++) {
       for (let y = 0; y < count; y++) {
         const u = count <= 1 ? 0.5 : x / (count - 1);
         const v = count <= 1 ? 0.5 : y / (count - 1);
         points.push({
-          radius: random.value() * 0.01,
+          radius: Math.abs(0.01 + random.gaussian() * 0.01),
           position: [u, v]
         });
       }
