@@ -15,5 +15,10 @@ npm install
 
 Run by calling canvas-sketch followed by the JavaScript file to run.
 ```
-canvas-sketch sketch.js
+canvas-sketch src/index.js
+```
+
+Build
+```
+canvas-sketch src/index.js --build
 ```
